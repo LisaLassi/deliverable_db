@@ -22,7 +22,7 @@ CREATE TABLE product_description (
 
 
 CREATE TABLE products (
-        products_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        product_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
         SKU VARCHAR(20) NOT NULL UNIQUE,
         name VARCHAR(50) NOT NULL,
         category_id INTEGER NOT NULL,
@@ -36,22 +36,22 @@ CREATE TABLE products (
 
 CREATE TABLE product_sizes (
         product_size_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        products_id INTEGER NOT NULL,
-        sizes VARCHAR(50) NOT NULL,
-        FOREIGN KEY (products_id) REFERENCES products(products_id)
+        product_id INTEGER NOT NULL,
+        sizes VARCHAR(20) NOT NULL,
+        FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
 
 CREATE TABLE product_colours (
         product_colour_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	products_id INTEGER NOT NULL,
+	product_id INTEGER NOT NULL,
 	colours VARCHAR(50) NOT NULL,
-	FOREIGN KEY (products_id) REFERENCES products(products_id)
+	FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
 CREATE TABLE product_materials (
 	product_material_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	products_id INTEGER NOT NULL,
+	product_id INTEGER NOT NULL,
 	materials VARCHAR(50) NOT NULL,
-	FOREIGN KEY (products_id) REFERENCES products(products_id)
+	FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
