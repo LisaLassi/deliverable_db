@@ -37,7 +37,7 @@ CREATE TABLE products (
 CREATE TABLE product_sizes (
         product_size_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
         product_id INTEGER NOT NULL,
-        sizes VARCHAR(20) NOT NULL,
+        size VARCHAR(20) NOT NULL,
         FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
@@ -45,13 +45,13 @@ CREATE TABLE product_sizes (
 CREATE TABLE product_colours (
         product_colour_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	product_id INTEGER NOT NULL,
-	colours VARCHAR(50) NOT NULL,
+	colour VARCHAR(50) NOT NULL,
 	FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
 CREATE TABLE product_materials (
 	product_material_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	product_id INTEGER NOT NULL,
-	materials VARCHAR(50) NOT NULL,
+	material VARCHAR(50) NOT NULL,
 	FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
