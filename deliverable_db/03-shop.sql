@@ -4,8 +4,8 @@ CREATE TABLE category (
 );
 
 
-CREATE TABLE manifacturer (
-	manifacturer_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE manufacturer (
+	manufacturer_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(50) NOT NULL,
 	address VARCHAR(65) NOT NULL,
 	contact_name VARCHAR(25) NOT NULL,
@@ -14,13 +14,44 @@ CREATE TABLE manifacturer (
 );
 
 
+CREATE TABLE product_description (
+	product_description_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	description TEXT NOT NULL,
+	instructions TEXT
+);
+
+
 CREATE TABLE products (
         products_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
         SKU VARCHAR(20) NOT NULL UNIQUE,
         name VARCHAR(50) NOT NULL,
-        description TEXT NOT NULL,
-        categories_id INTEGER,
-        manifacturer_id INTEGER,
+        category_id INTEGER NOT NULL,
+        manufacturer_id INTEGER NOT NULL,
+	product_description_id INTEGER NOT NULL,
         FOREIGN KEY (category_id) REFERENCES category(category_id),
-        FOREIGN KEY (manifacturer_id) REFERENCES manifacturer(manifacturer_id)
+        FOREIGN KEY (manufacturer_id) REFERENCES manufacturer(manufacturer_id),
+	FOREIGN KEY (product_description_id) REFERENCES product_description(product_description_id)
+);
+
+
+CREATE TABLE product_sizes (
+        product_size_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        products_id INTEGER NOT NULL,
+        sizes VARCHAR(50) NOT NULL,
+        FOREIGN KEY (products_id) REFERENCES products(products_id)
+);
+
+
+CREATE TABLE product_colours (
+        product_colour_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	products_id INTEGER NOT NULL,
+	colours VARCHAR(50) NOT NULL,
+	FOREIGN KEY (products_id) REFERENCES products(products_id)
+);
+
+CREATE TABLE product_materials (
+	product_material_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	products_id INTEGER NOT NULL,
+	materials VARCHAR(50) NOT NULL,
+	FOREIGN KEY (products_id) REFERENCES products(products_id)
 );
