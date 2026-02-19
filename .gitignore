@@ -1,1 +1,9 @@
+# Miljövariabler
 .env
+
+# Vim swap-filer
+*.swp
+
+# Backup-filer från redigerare
+*~
+
