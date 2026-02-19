@@ -3,7 +3,6 @@ CREATE TABLE category (
 	name VARCHAR(50) NOT NULL
 );
 
-
 CREATE TABLE manufacturer (
 	manufacturer_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(50) NOT NULL,
@@ -13,13 +12,11 @@ CREATE TABLE manufacturer (
 	contact_mail VARCHAR (60) NOT NULL
 );
 
-
 CREATE TABLE product_description (
 	product_description_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	description TEXT NOT NULL,
 	instructions TEXT
 );
-
 
 CREATE TABLE products (
         product_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -32,7 +29,6 @@ CREATE TABLE products (
         FOREIGN KEY (manufacturer_id) REFERENCES manufacturer(manufacturer_id),
 	FOREIGN KEY (product_description_id) REFERENCES product_description(product_description_id)
 );
-
 
 CREATE TABLE product_sizes (
         product_size_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
