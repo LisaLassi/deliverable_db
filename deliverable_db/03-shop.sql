@@ -37,7 +37,6 @@ CREATE TABLE product_sizes (
         FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
-
 CREATE TABLE product_colours (
         product_colour_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	product_id INTEGER NOT NULL,
