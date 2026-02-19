@@ -19,7 +19,7 @@ CREATE TABLE user_address (
 CREATE TABLE order_information (
 	order_information_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	billing_address INTEGER NOT NULL,
-        delivery_address INTEGER NOT NULL,
+	delivery_address INTEGER NOT NULL,
 	user_id INTEGER NOT NULL,
 	FOREIGN KEY (billing_address) REFERENCES user_address(user_address_id),
 	FOREIGN KEY (delivery_address) REFERENCES user_address(user_address_id),
