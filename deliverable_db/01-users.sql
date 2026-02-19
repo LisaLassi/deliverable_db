@@ -13,7 +13,7 @@ CREATE TABLE user_address (
 	zip_code VARCHAR (25),
 	city VARCHAR(100),
 	address_type TINYINT,
-        FOREIGN KEY (user_id) REFERENCES users(users_id)	
+	FOREIGN KEY (user_id) REFERENCES users(users_id)	
 );
 
 CREATE TABLE order_information (
