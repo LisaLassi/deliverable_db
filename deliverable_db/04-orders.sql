@@ -19,7 +19,7 @@ CREATE TABLE order_items (
 	order_id INTEGER NOT NULL,
 	product_id INTEGER NOT NULL,
 	quantity INTEGER NOT NULL CHECK (quantity > 0),                          -- Extra skydd som checkar att antalet inte kan vara mindre än 0	
-	price_at_purchase DECIMAL(10,2) NOT NULL                                 -- Ifall priset ändras så ska inte äldre ordrar påverkas
+	price_at_purchase DECIMAL(10,2) NOT NULL,                                 -- Ifall priset ändras så ska inte äldre ordrar påverkas
 	FOREIGN KEY (order_id) REFERENCES orders(order_id),
 	FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
