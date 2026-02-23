@@ -1,11 +1,11 @@
 DROP SCHEMA IF EXISTS deliverable_database;
-CREATE SCHEMA deliverable_database;
+CREATE SCHEMA deliverable_database CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE deliverable_database;
 
 CREATE TABLE users (
 	user_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(45) NOT NULL UNIQUE,
-	password VARCHAR(85) NOT NULL,
+	password VARCHAR(255) NOT NULL,
 	email VARCHAR(100) NOT NULL UNIQUE,
 	email_confirmation BOOLEAN DEFAULT FALSE
 );
