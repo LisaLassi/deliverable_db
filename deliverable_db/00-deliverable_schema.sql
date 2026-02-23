@@ -36,9 +36,10 @@ CREATE TABLE species (
 
 CREATE TABLE species_names (
 	species_name_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(80),
+	name VARCHAR(80) NOT NULL,
 	is_latin BOOLEAN DEFAULT FALSE,
 	species_id INTEGER NOT NULL,
+	UNIQUE (species_id, name),
 	FOREIGN KEY (species_id) REFERENCES species(species_id)
 );
 
