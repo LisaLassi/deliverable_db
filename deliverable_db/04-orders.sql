@@ -8,8 +8,10 @@ CREATE TABLE orders (
 	user_id INTEGER NOT NULL,
 	order_status_id INTEGER NOT NULL,
 	created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	warehouse_id INTEGER NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES users(user_id),
-	FOREIGN KEY (order_status_id) REFERENCES order_status(order_status_id)
+	FOREIGN KEY (order_status_id) REFERENCES order_status(order_status_id),
+	FOREIGN KEY (warehouse_id) REFERENCES warehouses(warehouse_id)
 );
 
 CREATE TABLE order_items (
