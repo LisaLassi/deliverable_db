@@ -1,5 +1,5 @@
 CREATE TABLE users (
-	users_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	user_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(45) NOT NULL UNIQUE,
 	password VARCHAR(85) NOT NULL,
 	email VARCHAR(100) NOT NULL UNIQUE,
@@ -13,7 +13,7 @@ CREATE TABLE user_address (
 	zip_code VARCHAR (25),
 	city VARCHAR(100),
 	address_type TINYINT,
-	FOREIGN KEY (user_id) REFERENCES users(users_id)	
+	FOREIGN KEY (user_id) REFERENCES users(user_id)	
 );
 
 CREATE TABLE order_information (
@@ -23,7 +23,7 @@ CREATE TABLE order_information (
 	user_id INTEGER NOT NULL,
 	FOREIGN KEY (billing_address) REFERENCES user_address(user_address_id),
 	FOREIGN KEY (delivery_address) REFERENCES user_address(user_address_id),
-	FOREIGN KEY (user_id) REFERENCES users(users_id)
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 

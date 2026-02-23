@@ -3,7 +3,7 @@ CREATE SCHEMA deliverable_database;
 USE deliverable_database;
 
 CREATE TABLE users (
-	users_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	user_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(45) NOT NULL UNIQUE,
 	password VARCHAR(85) NOT NULL,
 	email VARCHAR(100) NOT NULL UNIQUE,
@@ -17,7 +17,7 @@ CREATE TABLE user_address (
 	zip_code VARCHAR (25),
 	city VARCHAR(100),
 	address_type TINYINT,
-	FOREIGN KEY (user_id) REFERENCES users(users_id)
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE order_information (
@@ -40,7 +40,7 @@ CREATE TABLE species_names (
 	species_name_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(80),
 	is_latin BOOLEAN DEFAULT FALSE,
-	species_id INTEGER,
+	species_id INTEGER NOT NULL,
 	FOREIGN KEY (species_id) REFERENCES species(species_id)
 );
 
@@ -51,8 +51,10 @@ CREATE TABLE pets (
 	date_of_birth DATE,
 	description TEXT,
 	alive BOOLEAN DEFAULT TRUE,
-	species_id INTEGER,
-	FOREIGN KEY (species_id) REFERENCES species(species_id)
+	species_id INTEGER NOT NULL,
+	user_id INTEGER NOT NULL,
+	FOREIGN KEY (species_id) REFERENCES species(species_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE category (
@@ -81,6 +83,8 @@ CREATE TABLE products (
 	name VARCHAR(50) NOT NULL,
 	category_id INTEGER NOT NULL,
 	manufacturer_id INTEGER NOT NULL,
+	buy_price DECIMAL(10,2) NOT NULL,
+	sell_price DECIMAL(10,2) NOT NULL,
 	product_description_id INTEGER NOT NULL,
 	FOREIGN KEY (category_id) REFERENCES category(category_id),
 	FOREIGN KEY (manufacturer_id) REFERENCES manufacturer(manufacturer_id),
@@ -134,9 +138,11 @@ CREATE TABLE orders (
 	order_status_id INTEGER NOT NULL,
 	created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	warehouse_id INTEGER NOT NULL,
+	order_information_id INTEGER NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES users(user_id),
 	FOREIGN KEY (order_status_id) REFERENCES order_status(order_status_id),
-	FOREIGN KEY (warehouse_id) REFERENCES warehouses(warehouse_id)
+	FOREIGN KEY (warehouse_id) REFERENCES warehouses(warehouse_id),
+	FOREIGN KEY (order_information_id) REFERENCES order_information(order_information_id)
 );
 
 CREATE TABLE order_items (

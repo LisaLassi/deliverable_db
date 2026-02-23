@@ -8,7 +8,7 @@ CREATE TABLE species_names (
 	species_name_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(80),
 	is_latin BOOLEAN DEFAULT FALSE,
-	species_id INTEGER,
+	species_id INTEGER NOT NULL,
 	FOREIGN KEY (species_id) REFERENCES species(species_id)
 );
 
@@ -19,8 +19,10 @@ CREATE TABLE pets (
 	date_of_birth DATE,
 	description TEXT,
 	alive BOOLEAN DEFAULT TRUE,
-	species_id INTEGER,
-	FOREIGN KEY (species_id) REFERENCES species(species_id)
+	species_id INTEGER NOT NULL,
+	user_id NOT NULL,
+	FOREIGN KEY (species_id) REFERENCES species(species_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 -- Separerar species_id och species_name för att kunna lägga till flera

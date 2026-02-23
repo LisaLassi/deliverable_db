@@ -24,6 +24,8 @@ CREATE TABLE products (
 	name VARCHAR(50) NOT NULL,
 	category_id INTEGER NOT NULL,
 	manufacturer_id INTEGER NOT NULL,
+	buy_price DECIMAL(10,2) NOT NULL,
+	sell_price DECIMAL(10,2) NOT NULL,
 	product_description_id INTEGER NOT NULL,
 	FOREIGN KEY (category_id) REFERENCES category(category_id),
 	FOREIGN KEY (manufacturer_id) REFERENCES manufacturer(manufacturer_id),
