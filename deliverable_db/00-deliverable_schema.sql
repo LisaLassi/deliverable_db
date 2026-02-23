@@ -24,10 +24,8 @@ CREATE TABLE order_information (
 	order_information_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	billing_address INTEGER NOT NULL,
 	delivery_address INTEGER NOT NULL,
-	user_id INTEGER NOT NULL,
 	FOREIGN KEY (billing_address) REFERENCES user_address(user_address_id),
-	FOREIGN KEY (delivery_address) REFERENCES user_address(user_address_id),
-	FOREIGN KEY (user_id) REFERENCES users(users_id)
+	FOREIGN KEY (delivery_address) REFERENCES user_address(user_address_id)
 );
 
 
@@ -163,8 +161,8 @@ CREATE TABLE messages (
 	content VARCHAR (250),
 	date_and_time DATETIME DEFAULT CURRENT_TIMESTAMP,
 	parent_id INTEGER NULL,
-	FOREIGN KEY (sender_id) REFERENCES users(users_id) ON DELETE CASCADE,
-	FOREIGN KEY (receiver_id) REFERENCES users(users_id) ON DELETE CASCADE,
+	FOREIGN KEY (sender_id) REFERENCES users(user_id) ON DELETE CASCADE,
+	FOREIGN KEY (receiver_id) REFERENCES users(user_id) ON DELETE CASCADE,
 	FOREIGN KEY (parent_id) REFERENCES messages(messages_id) ON DELETE CASCADE
 );
 
